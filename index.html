@@ -3,7 +3,33 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+
+<!-- SEO & Positioning Meta Tags -->
 <title>⚽ Mundial 2026 – Fixture Interactivo | Horarios Perú</title>
+<meta name="title" content="⚽ Mundial 2026 – Fixture Interactivo | Horarios Perú"/>
+<meta name="description" content="Simula los resultados de la Copa Mundial FIFA 2026. Fixture interactivo con todos los partidos, grupos y fases de eliminación adaptados a la Hora de Perú (PET / UTC-5). Guarda tus pronósticos."/>
+<meta name="keywords" content="mundial 2026, fixture interactivo mundial 2026, horarios peru mundial 2026, simulador mundial 2026, copa mundial fifa 2026, calendario mundial 2026 peru, pronosticos mundial 2026, fixture peru mundial, simular mundial 2026"/>
+<meta name="robots" content="index, follow"/>
+<meta name="language" content="Spanish"/>
+<meta name="author" content="Ernesto Nicho Espinoza"/>
+<meta name="theme-color" content="#07111e"/>
+
+<!-- Open Graph / Facebook / WhatsApp -->
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://enichoe.github.io/mundial2026/"/>
+<meta property="og:title" content="⚽ Mundial 2026 – Fixture Interactivo | Horarios Perú"/>
+<meta property="og:description" content="Simula los resultados de la Copa Mundial FIFA 2026. Fixture interactivo con todos los partidos, grupos y fases de eliminación adaptados a la Hora de Perú (PET / UTC-5). Guarda tus pronósticos."/>
+<meta property="og:image" content="https://enichoe.github.io/mundial2026/og-image.png"/>
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image"/>
+<meta property="twitter:url" content="https://enichoe.github.io/mundial2026/"/>
+<meta property="twitter:title" content="⚽ Mundial 2026 – Fixture Interactivo | Horarios Perú"/>
+<meta property="twitter:description" content="Simula los resultados de la Copa Mundial FIFA 2026. Fixture interactivo con todos los partidos, grupos y fases de eliminación adaptados a la Hora de Perú (PET / UTC-5). Guarda tus pronósticos."/>
+<meta property="twitter:image" content="https://enichoe.github.io/mundial2026/og-image.png"/>
+
+<!-- Canonical Link -->
+<link rel="canonical" href="https://enichoe.github.io/mundial2026/"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
@@ -296,10 +322,44 @@ footer{
   .match-row{grid-template-columns:58px 1fr auto 1fr;gap:4px;padding:6px 8px}
   .team-name{font-size:11px;max-width:100px}
   .score-input{width:30px;height:27px;font-size:13px}
-  .standings-table th:nth-child(n+8),
-  .standings-table td:nth-child(n+8){display:none}
+  .standings-table th:nth-child(n+4):nth-child(-n+8),
+  .standings-table td:nth-child(n+4):nth-child(-n+8){display:none}
+  .standings-table th,
+  .standings-table td{padding:5px 4px;font-size:11px}
+  .standings-table th:first-child,
+  .standings-table td:first-child{padding-left:8px}
   .ko-grid{grid-template-columns:1fr}
 }
+
+/* Mantener visible la columna PTS en móviles y hacerla "sticky" a la derecha */
+@media(max-width:600px){
+  .standings-table th:nth-child(10),
+  .standings-table td:nth-child(10){
+    display:table-cell !important;
+    position:sticky;
+    right:0;
+    background:linear-gradient(180deg,var(--bg3),var(--bg2));
+    z-index:3;
+    padding-left:8px;padding-right:10px;
+    text-align:center;
+  }
+  .standings-table th:nth-child(10){color:var(--gold);font-weight:800}
+}
+
+/* Botón QR pequeño en footer */
+.qr-btn{
+  display:inline-block;padding:6px 8px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);
+  background:transparent;color:var(--text2);font-size:11px;margin-left:8px;vertical-align:middle;
+}
+.qr-btn:hover{color:var(--text);background:rgba(255,255,255,0.02)}
+
+/* Modal de vista previa del QR */
+.qr-modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.6);z-index:1000}
+.qr-modal.show{display:flex}
+.qr-modal .card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:12px;max-width:92vw;max-height:92vh;display:flex;flex-direction:column;align-items:center}
+.qr-modal img{max-width:84vw;max-height:72vh;border-radius:6px;display:block}
+.qr-modal .close{margin-top:8px;padding:6px 10px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--text2)}
+.qr-modal .close:hover{color:var(--text);background:rgba(255,255,255,0.02)}
 </style>
 </head>
 <body>
@@ -410,8 +470,19 @@ footer{
 <footer>
   📺 Transmisión en Perú: <b>DirecTV / DGO (DSports)</b> · <b>Paramount+</b> · <b>América TV</b> (40 partidos en abierto)
   &nbsp;|&nbsp; Todos los horarios en Hora Perú (PET / UTC-5)
-  &nbsp;|&nbsp; Creado por ERNESTO NICHO ESPINOZA
+</b> &nbsp;|&nbsp; Creado por ERNESTO NICHO ESPINOZA
+  <button id="qr-btn" class="qr-btn" title="Ver QR de Yape">📲 Yape QR</button>
+</b>
+  <!-- Imagen QR ya subida en el proyecto; sustituye yape-qr.png por la tuya -->
+  <img id="qr-src" src="/WhatsApp Image 2026-06-10 at 11.55.17 AM.jpeg" alt="QR Yape" style="display:none" />
 </footer>
+
+<div id="qr-modal" class="qr-modal" aria-hidden="true">
+  <div class="card">
+    <img id="qr-img" src="" alt="QR Yape" />
+    <button class="close">Cerrar</button>
+  </div>
+</div>
 
 <div id="save-indicator">✓ Guardado</div>
 
@@ -892,6 +963,29 @@ function updateKOCardState(id){
   const played = r.h!==""&&r.h!==undefined&&r.a!==""&&r.a!==undefined&&r.ht&&r.at;
   card.classList.toggle("played", !!played);
 }
+
+// ════════════════════════════════════════════════════════════
+// QR: carga desde dispositivo y vista previa
+// ════════════════════════════════════════════════════════════
+function initQRControls(){
+  const btn = document.getElementById('qr-btn');
+  const srcImg = document.getElementById('qr-src');
+  const modal = document.getElementById('qr-modal');
+  const img = document.getElementById('qr-img');
+  if(!btn || !srcImg || !modal || !img) return;
+  btn.addEventListener('click', ()=>{
+    // Mostrar el QR que ya está incluido en el HTML (img#qr-src)
+    if(srcImg.src){ img.src = srcImg.src; modal.classList.add('show'); }
+  });
+  modal.addEventListener('click',(ev)=>{
+    if(ev.target === modal || ev.target.classList.contains('close')) {
+      modal.classList.remove('show');
+      img.src = '';
+    }
+  });
+  document.addEventListener('keydown',(e)=>{ if(e.key==='Escape'){ modal.classList.remove('show'); img.src=''; }});
+}
+initQRControls();
 
 // ════════════════════════════════════════════════════════════
 //  NAVIGATION

@@ -353,6 +353,23 @@ footer{
 }
 .qr-btn:hover{color:var(--text);background:rgba(255,255,255,0.02)}
 
+
+.whatsapp-btn{
+    background:#25D366;
+    color:white;
+    border:none;
+    padding:8px 15px;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:bold;
+    margin-left:10px;
+}
+
+.whatsapp-btn:hover{
+    opacity:0.9;
+}
+
+
 /* Modal de vista previa del QR */
 .qr-modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.6);z-index:1000}
 .qr-modal.show{display:flex}
@@ -467,15 +484,41 @@ footer{
 
 </main>
 
+```html
 <footer>
-  📺 Transmisión en Perú: <b>DirecTV / DGO (DSports)</b> · <b>Paramount+</b> · <b>América TV</b> (40 partidos en abierto)
+  📺 Transmisión en Perú:
+  <b>DirecTV / DGO (DSports)</b> ·
+  <b>Paramount+</b> ·
+  <b>América TV</b> (40 partidos en abierto)
+
   &nbsp;|&nbsp; Todos los horarios en Hora Perú (PET / UTC-5)
-</b> &nbsp;|&nbsp; Creado por ERNESTO NICHO ESPINOZA
-  <button id="qr-btn" class="qr-btn" title="Ver QR de Yape">📲 Yape QR</button>
-</b>
-  <!-- Imagen QR ya subida en el proyecto; sustituye yape-qr.png por la tuya -->
-  <img id="qr-src" src="/WhatsApp Image 2026-06-10 at 11.55.17 AM.jpeg" alt="QR Yape" style="display:none" />
+  <br><br>
+
+  © 2026 ERNESTO NICHO ESPINOZA - Todos los derechos reservados.
+  <br>
+  🆓 <b>VERSIÓN TOTALMENTE GRATUITA</b>
+  <br>
+  ⚠️ Si alguien intenta venderte esta aplicación o sitio web,
+  <b>DENÚCIALO</b>. Su distribución es completamente gratuita.
+  <br><br>
+
+  <button id="qr-btn" class="qr-btn" title="Ver QR de Yape">
+    📲 Yape QR
+  </button>
+
+  <a href="https://wa.me/51932721373" target="_blank">
+    <button class="whatsapp-btn" title="Contactar por WhatsApp">
+      💬 WhatsApp
+    </button>
+  </a>
+
+  <img id="qr-src"
+       src="/WhatsApp Image 2026-06-10 at 11.55.17 AM.jpeg"
+       alt="QR Yape"
+       style="display:none" />
 </footer>
+```
+
 
 <div id="qr-modal" class="qr-modal" aria-hidden="true">
   <div class="card">
